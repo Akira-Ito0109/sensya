@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TankHealth : MonoBehaviour
 {
@@ -17,9 +18,17 @@ public class TankHealth : MonoBehaviour
 
             if(tankHP<=0)
             {
-                Destroy(gameObject);
+               // Destroy(gameObject);
+
+                this.gameObject.SetActive(false);
+
+                Invoke("GoToGameOver", 1.5f);
             }
         }
+    }
+    void GoToGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
 }
